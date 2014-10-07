@@ -1,0 +1,79 @@
+brew install redis
+redis-server
+sudo ln -s /usr/local/bin/redis redis-cli
+
+redis ping
+redis info
+redis info | grep db
+redis			# start redis shell
+
+# string
+set hello world
+get hello
+
+set counter 1
+incr counter		# strings <--> numbers!
+
+# list
+lpush wa ha ha ha
+lrange wa 0 10		# everything is 0-indexed
+
+rpush wa ha
+lrange wa 0 10
+
+lpush wa za
+lrange wa 0 10
+
+lpop wa
+lrange wa 0 10
+
+# set
+sadd foo bar1 bar1 bar2 bar3	# sets contain unique elts
+smembers foo
+scard foo
+
+sismember foo bar4
+sismember foo bar1
+
+sadd faa bar1 bar2
+smembers foo
+smembers faa
+sinter foo faa		# set operations possible
+
+sscan foo 0
+
+# zset			# zsets are just sets w/ embedded sort keys
+zadd z 10 jason
+zadd z 100 deniz
+
+zrange z 0 1000
+zrange z 0 1000 withscores
+
+zrevrange z 0 1000 withscores
+
+# hash
+hset h k1 v1
+hmset h k2 v2 k3 v3 k4 v4
+hkeys h
+hvals h
+hgetall h
+hlen h
+
+hset h k1 000
+hgetall h
+
+hdel h k4
+hgetall h
+
+# etc
+monitor
+randomkey
+keys
+type
+expire hello 10
+ttl hello
+exists hello
+del
+scan		# scan is new, iterates through all keys (not in order)
+flushdb
+flushall

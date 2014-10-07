@@ -1,0 +1,100 @@
+what is d3?
+def1: a library for rendering interactive visualizations in the browser
+
+*********
+The DOM
+*********
+
+what is a webpage?
+implementation of various "web standards" (specs & defs for web design)
+html - structure
+http://bost.ocks.org/mike/d3/workshop/hello-world.html
+
+css - aesthetics (colors, fonts, etc)
+http://bost.ocks.org/mike/d3/workshop/hello-css.html
+
+javascript - behavior, interactivity
+http://bost.ocks.org/mike/d3/workshop/hello-javascript.html
+
+the logical structure of a webpage is defined in terms of a set of parent-child relationships between html elements. this element hierarchy is called the DOM.
+(demo inspect element in chrome)
+
+the central goal of d3 is to make data-driven viz easier without introducing a new way of representing an image (eg, by using existing standards only)
+--> the task of creating a viz boils down to *constructing a DOM from a dataset*
+--> each data point will have a corresponding DOM elt
+
+svg is a std for representing 2d images in xml (embedded in html)
+http://alignedleft.com/content/03-tutorials/01-d3/110-drawing-svgs/1.html
+
+note:
+- pixel-based graphics are made up of pixels with specific location & color assignments
+- vector graphics are made up of lines, curves, points that are described mathematically
+--> svg advantages include zoomability, smaller file size, better display performance, and more flexibility for web developers
+
+def2: js library capable of building interactive viz's by directly manipulating the DOM
+
+*****************
+From Data to DOM
+*****************
+
+the name d3 stands for data-driven documents. documents refers to the DOM as above. the data-driven part refers to the fact that the dataset becomes the backbone of our DOM. we explicitly map recs from the dataset into DOM elts.
+
+http://alignedleft.com/content/03-tutorials/01-d3/110-drawing-svgs/3.html
+
+def3: js library capable of building interactive viz's by *binding data to html elements*
+
+note: data are represented by arrays
+
+**********
+Selectors
+**********
+
+the basic strategy for interactivity in d3 is to perform operations on selections of DOM elts. d3 does this by borrowing a powerful tool from css called the selector.
+
+a selector is a method that takes an input pattern as a parameter, operates on DOM elements, and returns an array of elements matching the input pattern (the selection).
+
+arrays of elts support selections --> method chaining
+
+http://alignedleft.com/content/03-tutorials/01-d3/110-drawing-svgs/3.html
+(demo changing circle radii, changing fill, changing cy until they go out of svg boundaries)
+
+
+**************
+The Data-Join
+**************
+see circle.html
+
+**************
+Loading Data
+**************
+data loading is always an asynchronous process!
+--> data-dependent code must be invoked via callback!
+
+d3.csv
+d3.tsv
+d3.json
+
+*********************
+Interactive Behavior
+*********************
+interactive behavior is added via "event handlers". this can be easily implemented by attaching an event listener to a node (or a selection of nodes), and by defining the event handling behavior
+
+we'll see a simple example of this in circles.html
+
+some more cool examples:
+svg swarm	http://bl.ocks.org/mbostock/2647924
+canvas swarm	http://bl.ocks.org/mbostock/2647922
+choropleth	http://bl.ocks.org/mbostock/3306362
+streamgraph	http://bl.ocks.org/mbostock/4060954
+binary tree	http://prcweb.co.uk/lab/d3-tree/
+layout tree (w edge bundling)	http://mbostock.github.io/d3/talk/20111018/tree.html
+
+force-directed graph	http://bl.ocks.org/mbostock/4062045
+network cooc mtx	http://bost.ocks.org/mike/miserables/
+
+realtime	http://bost.ocks.org/mike/path/
+interactive	http://bl.ocks.org/mbostock/4063663
+transitions	http://www.newyorker.com/sandbox/business/subway.html
+
+iris scatterplot	https://gist.github.com/mbostock/3887118
+many more in the gallery!

@@ -1,0 +1,91 @@
+knn classification
+
+ex: county voting patterns in presidential election
+
+===
+
+training step:
+	store (cache) training recs
+
+predicion step:
+	for each query point, find distances to all training points
+	assign label by majority vote of k nearest training points (neighbors)
+
+(draw 3NN example)
+
+"non parametric" (closely related to clustering, but here we use label info from training records)
+
+training step consists of just storing the training examples!
+--> all calculations postponed until prediction time
+--> tradeoff; no comp complexity incurred here, lots incurred later
+
+--> each time a new record is encountered, its distances to training records are determined & a new *local* hypothesis is created which is valid only for this new record
+--> as opposed to a global hypothesis, we create a new (local) hypothesis for each prediction ("non-generalizing algo")
+--> one local hypothesis (eg, pointwise classification decision) is not meant to generalize to another point
+
+instance based/lazy learner (no training required)
+contrast w "eager learner" --> commits at training time to vector of params (for purpose of generalizing globally)
+
+"sensitive to the local structure of the data" --> can lead to complexity!
+
+--> much more complex decision bdys possible!
+--> high danger of overfitting!
+
+===
+
+what could lead to difficulty?
+skewed class distribution --> can overcome by weighting votes eg by (1/distance)^n
+--> note: distance-weighting can help to smooth out predictions when training data is noisy
+--> also allows algo to be run "globally"
+
+complexity from rows
+high comp expense in calculating #(Train) distances for each test record
+--> can be parallelized!
+--> efficient memory structures can also give practical runtime benefits
+
+complexity from columns
+feature scaling --> out of scale feature can bias distance calcs)
+feature selection --> if target concept relies only on a subset of attributes,
+then distance calcs across all attributes can be misleading
+--> curse of dimensionality! (nn models are especially susceptible to this)
+--> can be mitigated by CV (note CV w/ NN models is particularly easy, since number of training steps is constant/independent of number of folds)
+
+(addl preprocessing option: dim reduction or clustering)
+(eg, could perform pca & then knn on latent features in low-dim embedding)
+
+also sensitive to choice of k (eg, example w/ 3NN vs 5NN)
+
+how to choose k?
+large k --> reduce effects of noise --> possible underfitting!
+small k --> achieve complex dec bdy's --> possible overfitting!
+--> choose k by CV!
+(note: ties can be avoided by weighting scheme or by choosing odd-valued k)
+
+===
+
+what do you really need to perform knn? --> a **distance matrix** (equiv, similarity mtx)
+--> how many calcs? m*(n-1)/2
+--> this looks quadratic! what if n is large? (distributed calc)
+
+cts feature space --> Euclidean distance
+other feature space --> other metric (jaccard coeff, cosine distance, hamming distance, tf-idf, etc)
+
+application: any data that can be embedded in a feature space (eg text data, faq's, legal cases, scientific experiments, etc)
+--> this matches the implicit classification schemes our brains apply intuitively!
+
+===
+
+what can we say about the hypothesis space of a NN model?
+
+--> in the limit of many query points, hyp space is a Voronoi tessellation (which depends on the metric!)
+	--> NN(point) = sample(point)
+	--> NN(sample) is determined by nearest cell boundary
+
+--> VC dim grows w/ number of training examples!
+--> complexity!
+
+eager learners have more restrictions on their hypothesis spaces --> less complexity, more bias (eg danger of underfitting complex decision boundary)
+
+lazy learners make local generalization decisions & avoid forming any explicit global hypothesis --> more complexity, less bias (eg less danger of underfitting complex boundary, more danger of overfitting data)
+
+but still possible to underfit! eg for too-large values of k

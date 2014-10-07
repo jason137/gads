@@ -1,0 +1,43 @@
+===========
+pre-work
+===========
+
+Please complete these steps before the course begins:
+
+    step 1 (Mac users):
+        install homebrew (a package manager for osx) --> http://brew.sh/
+
+    step 1 (Linux users):
+        familiarize yourself with the package manager native to your distribution; eg yum, apt-get, etc.
+
+    Please come to the first class with a package manager installed & a basic idea of how to use it. We will install python and some relevant libraries together.
+
+Please complete these steps by the end of week 1:
+
+    step 2: unix review
+    http://cli.learncodethehardway.org/book/
+
+    step 3: python review
+    https://developers.google.com/edu/python/
+    http://learnpythonthehardway.org/
+
+    optional: try some of these out
+    http://projecteuler.net/
+
+===========
+refs
+===========
+
+These references are optional. The material presented in class will most closely reflect the tone of the intro & intermediate books.
+
+intro:          http://www.amazon.com/Data-Analysis-Open-Source-Tools/dp/0596802358
+                http://www.amazon.com/Learning-McGraw-Hill-International-Editions-Computer/dp/0071154671
+
+intermediate:   http://www.amazon.com/Introduction-Data-Mining-Pang-Ning-Tan/dp/0321321367
+                http://www.amazon.com/Learning-From-Data-Yaser-Abu-Mostafa/dp/1600490069
+
+advanced:       http://www.amazon.com/Foundations-Machine-Learning-Adaptive-Computation/dp/026201825X
+                http://www.amazon.com/Pattern-Recognition-Learning-Information-Statistics/dp/0387310738
+                http://www.amazon.com/The-Elements-Statistical-Learning-Prediction/dp/0387848576
+
+python:        http://www.amazon.com/Quick-Python-Book-Second-Edition/dp/193518220X
