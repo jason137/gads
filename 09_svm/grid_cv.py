@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# author: Jason Dolatshahi
+
 import pandas as pd
 
 from sklearn.cross_validation import train_test_split, StratifiedKFold

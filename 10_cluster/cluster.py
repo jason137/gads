@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from itertools import combinations as combos
+# author: Jason Dolatshahi
 
 import pandas as pd
 

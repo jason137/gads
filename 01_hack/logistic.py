@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# author: Jason Dolatshahi
+
 import numpy as np
 import pandas as pd
 

@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# author: Jason Dolatshahi
+
 from operator import itemgetter
 
 from redis import StrictRedis       # this is the redis api for python (install

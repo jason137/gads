@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# author: Jason Dolatshahi
+
 from operator import itemgetter
 
 from mrjob.job import MRJob

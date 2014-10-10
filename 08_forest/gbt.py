@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# author: Jason Dolatshahi
+
 from sklearn.datasets import make_hastie_10_2
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.tree import DecisionTreeClassifier
