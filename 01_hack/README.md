@@ -2,68 +2,68 @@ NOTE: be careful what you do on the cmd line...there's no undo!
 
 === unix warmup ===
 
-echo 'hello'
-
-cd
-mkdir gads
-cd gads
-ls
-
-touch my_file1
-touch my_file2
-cat my_file1    (these files now exist in the fs, but they are empty)
-
-touch my_file33
-mv my_file33 my_file3
-
-touch my_file4
-rm my_file4
-
-ls my_file*
-
-for file in *; do echo $file; done
-for file in my_file*; do echo $file; done
-for file in my_file*; do mv $file $file.tmp; done
-
-rm my_file*
-
+    echo 'hello'
+    
+    cd
+    mkdir gads
+    cd gads
+    ls
+    
+    touch my_file1
+    touch my_file2
+    cat my_file1    (these files now exist in the fs, but they are empty)
+    
+    touch my_file33
+    mv my_file33 my_file3
+    
+    touch my_file4
+    rm my_file4
+    
+    ls my_file*
+    
+    for file in *; do echo $file; done
+    for file in my_file*; do echo $file; done
+    for file in my_file*; do mv $file $file.tmp; done
+    
+    rm my_file*
+    
 === data warmup ===
 
-head toy.data
-tail toy.data
-wc toy.data
-wc -l toy.data
-man wc
-
-less toy.data --> scrolling, pattern matching
-grep test1 toy.data
-grep test1$ toy.data --> regexes!
-
-cat toy.data | grep test1
-cat toy.data | grep test1$
-cat toy.data | grep test1\\$ --> escape chars!
-
-head toy.data | sed 's/test/waffle/'
-head toy.data | sed 's/t//'
-head toy.data | sed 's/t//g'
+    head toy.data
+    tail toy.data
+    wc toy.data
+    wc -l toy.data
+    man wc
+    
+    less toy.data --> scrolling, pattern matching
+    grep test1 toy.data
+    grep test1$ toy.data --> regexes!
+    
+    cat toy.data | grep test1
+    cat toy.data | grep test1$
+    cat toy.data | grep test1\\$ --> escape chars!
+    
+    head toy.data | sed 's/test/waffle/'
+    head toy.data | sed 's/t//'
+    head toy.data | sed 's/t//g'
 
 === citibike dataset ===
 
-goal: let's clean this dataset up
-
-what does the data look like?
-    head citibike.csv
-    wc -l citibike.csv
-    less citibike.csv
-    /False
-
-which stations are test stations?
-    less citibike.csv
-    /True
-    cat citibike.csv | grep True
-    --> no test stations, so this field is useless
-
-it looks like name & addr1 are the same...how can we verify this?
+    goal: let's clean this dataset up
+    
+    what does the data look like?
+        head citibike.csv
+        wc -l citibike.csv
+        less citibike.csv
+        /False
+    
+    which stations are test stations?
+        less citibike.csv
+        /True
+        cat citibike.csv | grep True
+        --> no test stations, so this field is useless
+    
+    it looks like name & addr1 are the same...how can we verify this?
 
 === awk ===
 
@@ -135,13 +135,16 @@ what about the status_key?
 so these fields encode the same info...we only need one
 
 the fields we want to keep are:
+
     id, name, addr1, lat, lon, bikes_avail, spots_avail, spots_total, status_val
 
 let's create a new file using awk
+
     head -n1 citibike.csv | awk -F, 'BEGIN {OFS=","} {print $1, $2, $3, $5, $6, $7, $8, $9, $10}'
     cat citibike.csv | awk -F, 'BEGIN {OFS=","} {print $1, $2, $3, $5, $6, $7, $8, $9, $10}' > new_citibike.csv
 
 here's a more compact version using gcut (installed via homebrew)
+
     head -n1 citibike.csv | gcut -d, -f4,11,12 --complement
     cat citibike.csv | gcut -d, -f2,4,11,12 --complement > new_citibike.csv
 
