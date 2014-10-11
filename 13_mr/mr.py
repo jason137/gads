@@ -4,10 +4,7 @@
 from operator import itemgetter
 
 from mrjob.job import MRJob
-from pymongo import MongoClient
-
-def new_func():
-    pass
+# from pymongo import MongoClient
 
 class WordCount(MRJob):
 
@@ -99,8 +96,8 @@ class DoNothing(MRJob):
         yield line, 1
 
 if __name__ == '__main__':
-    # WordCount.run()
+    WordCount.run()
     # DistrGrep.run()
     # InvertIndex.run()
     # DistrDB.run()
-    DoNothing.run()
+    # DoNothing.run()
