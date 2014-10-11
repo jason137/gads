@@ -49,21 +49,23 @@ NOTE: be careful what you do on the cmd line...there's no undo!
 
 === citibike dataset ===
 
-    goal: let's clean this dataset up
+goal: let's clean this dataset up
     
-    what does the data look like?
-        head citibike.csv
-        wc -l citibike.csv
-        less citibike.csv
-        /False
+what does the data look like?
+
+    head citibike.csv
+    wc -l citibike.csv
+    less citibike.csv
+    /False
     
-    which stations are test stations?
-        less citibike.csv
-        /True
-        cat citibike.csv | grep True
-        --> no test stations, so this field is useless
+which stations are test stations?
+
+    less citibike.csv
+    /True
+    cat citibike.csv | grep True
+    --> no test stations, so this field is useless
     
-    it looks like name & addr1 are the same...how can we verify this?
+it looks like name & addr1 are the same...how can we verify this?
 
 === awk ===
 
